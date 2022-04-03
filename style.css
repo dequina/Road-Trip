@@ -1,0 +1,41 @@
+#grid-container {
+    display:grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    justify-items: center;
+}
+#container {
+   grid-row: 1 / span 1;
+   grid-column: 1 / span 1;
+
+}
+
+body {
+    font-family: arial, sans-serif;
+    font-size: 24px;
+  }
+
+canvas {
+    position: relative;
+    z-index: 1;
+    width: 600px;
+    height: 600px;
+    border: 2px double white;
+    border-radius: 5px;
+  }
+
+#text{
+    grid-row: 2/span 1;
+    grid-column: 1/span 2;
+    background-color: rgb(121, 126, 128);
+    border: 2px double white;
+    border-radius: 5px;
+    padding: 2%;
+    margin: 3%;
+}
+img {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    border: 2px double white;
+    border-radius: 5px;
+}
