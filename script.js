@@ -24,10 +24,11 @@ var int2;
 var ground;
 var me;
 
-// the initial image height
+// Initial image height
 var imgHeight = 0;
 var scrollSpeed = 5;
 
+// little alien guy
 class characterComponent {
 	constructor(width, height, x, y, picture, con) {
 		this.width = width;
@@ -49,6 +50,7 @@ class characterComponent {
 	}
 }
 
+// ground
 class groundComponent {
 	constructor(width, height, x, y, con) {
 		this.width = width;
@@ -67,6 +69,7 @@ class groundComponent {
 	}
 }
 
+// rocks
 class obstacle {
 	constructor(width, height, x, y, pic, con) {
 		this.width = width;
@@ -104,9 +107,7 @@ function getRandomInt(max) {
 	return Math.floor(Math.random() * max);
 }
 
-
-// window.onload is an event that occurs when all the assets
-// have been successfully loaded
+// after assets are loaded
 window.onload = function(){
 	can = document.getElementById('canvas1');
 	ctx = can.getContext('2d');
@@ -120,7 +121,7 @@ window.onload = function(){
 		ctx.drawImage(title, 0, 0, can.width, can.height);
 	}
 
-
+    // controls
 	window.addEventListener('keydown', event => {
 		if (event.code == "KeyW" || event.code =="ArrowUp" || (event.code == "Space" && state == 1)){
 			moveUp(me);
@@ -162,10 +163,11 @@ function loop()
 	ctx.drawImage(img, imgHeight, 0);
 	// update image height
 	imgHeight = ((imgHeight - scrollSpeed)) % can.width;
-	// draw image 2 
+	// draw next image
 	ctx.drawImage(img, imgHeight + can.width, 0);
 	ground.render();
 
+	// check for collisionz
 	for (var i = 0; i < myObs.length; i += 1) {
 		if (myObs[i].crashCheck(me)) {
 			endGame();
@@ -195,6 +197,8 @@ function loop()
 	drawScore();
 	me.update();
 }
+
+// adds new rocks
 function addNew(){
 	if (myObs.length < 3) {
 	  myObs.push(new obstacle(can.width/10, can.width/10, can.width, ground.y - 48, "rocks.png", ctx));
