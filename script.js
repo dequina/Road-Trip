@@ -4,12 +4,12 @@
 var can;
 var ctx;
 var img = new Image();
-img.src = "lol.png";
+img.src = "assets/lol.png";
 var score = 0;
 var highScore = 0;
 
 var title = new Image();
-title.src = "title.png";
+title.src = "assets/title.png";
 
 
 // World vars
@@ -59,7 +59,7 @@ class groundComponent {
 		this.y = y;
 		this.con = con;
 		this.image = new Image();
-		this.image.src = "ground.png";
+		this.image.src = "assets/ground.png";
 
 		this.render = function (){
 			this.con.drawImage(this.image, this.x, this.y, this.width, this.height);
@@ -146,7 +146,7 @@ function start() {
 	ctx.clearRect(0, 0, can.width, can.height);
 	// main character
 	ground = new groundComponent(can.width, can.height / 3, 0, 2 * can.height / 3, ctx);
-	me = new characterComponent(can.width/10,can.width/10, can.width/20, can.height/2, "player.png",ctx);
+	me = new characterComponent(can.width/10,can.width/10, can.width/20, can.height/2, "assets/player.png",ctx);
 	score = 0;
 	startGame();
 }
@@ -201,7 +201,7 @@ function loop()
 // adds new rocks
 function addNew(){
 	if (myObs.length < 3) {
-	  myObs.push(new obstacle(can.width/10, can.width/10, can.width, ground.y - 48, "rocks.png", ctx));
+	  myObs.push(new obstacle(can.width/10, can.width/10, can.width, ground.y - 48, "assets/rocks.png", ctx));
 	}
 	
 }
